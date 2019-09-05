@@ -6,7 +6,6 @@
 FROM jboss/business-central-workbench:7.25.0.Final
 
 ####### MAINTAINER ############
-MAINTAINER "Michael Biarnes Kiefer" "mbiarnes@redhat.com"
 
 ####### ENVIRONMENT ############
 # Use demo and examples by default in this showcase image (internet connection required).
@@ -17,6 +16,7 @@ ENV JAVA_OPTS -Xms256m -Xmx2048m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=512m
 ADD etc/application-users.properties $JBOSS_HOME/standalone/configuration/application-users.properties
 ADD etc/application-roles.properties $JBOSS_HOME/standalone/configuration/application-roles.properties
 ADD etc/jbpm-custom.cli $JBOSS_HOME/bin/jbpm-custom.cli
+ADD etc/ErraiService.properties $JBOSS_HOME/standalone/deployments/$KIE_CONTEXT_PATH.war/WEB-INF/classes/ErraiService.properties
 
 # Added files are chowned to root user, change it to the jboss one.
 USER root
